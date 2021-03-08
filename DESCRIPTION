@@ -1,0 +1,26 @@
+Package: swears
+Title: Play around with swearing.
+Version: 0.0.0.9000
+Authors@R:
+    person(given = "Jordan",
+           family = "Barbone",
+           role = c("aut", "cph", "cre"),
+           email = "jmbarbone@gmail.com",
+           comment = c(ORCID = "0000-0001-9788-3628"))
+Description: Provides an easy method for outputting swears; adding them in
+    addition to error messages, and censoring.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Requires:
+    R (>= 3.6)
+Suggests:
+    crayon,
+    testthat (>= 3.0.0),
+    utils
+Depends: 
+    R (>= 2.10)
+Config/testthat/edition: 3
