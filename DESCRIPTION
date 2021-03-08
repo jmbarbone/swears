@@ -19,6 +19,7 @@ Requires:
     R (>= 3.6)
 Suggests:
     crayon,
+    spelling,
     testthat (>= 3.0.0),
     utils
 Depends: 

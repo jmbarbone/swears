@@ -57,7 +57,7 @@ Error in df[1] : object of type 'closure' is not subsettable
 You're not f*cking subsettable!
 ```
 
-## Acknowledgements
+## Acknowledgments
 
 -   Guilherme Hermanson’s [cuRse](https://github.com/G-Hermanson/cuRse)
     package.
