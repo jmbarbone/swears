@@ -1,5 +1,5 @@
 Package: swears
-Title: Play around with swearing.
+Title: Play around with swearing
 Version: 0.0.0.9000
 Authors@R:
     person(given = "Jordan",
