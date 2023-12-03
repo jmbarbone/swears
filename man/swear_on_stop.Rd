@@ -2,9 +2,15 @@
 % Please edit documentation in R/swear.R
 \name{swear_on_stop}
 \alias{swear_on_stop}
+\alias{swear_on_stop_append}
+\alias{swear_on_stop_reset}
 \title{swear on stop}
 \usage{
 swear_on_stop()
+
+swear_on_stop_append()
+
+swear_on_stop_reset()
 }
 \description{
 This changes the global
