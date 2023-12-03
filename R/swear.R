@@ -28,8 +28,8 @@ swear <- function(method = getOption("swear.method", "explicit"), n = 1L, id = N
 }
 
 #' @export
-print.swear <- function(x, ...) {
-  cat(red(paste0(x, collapse = "\n")), sep = "\n")
+print.swear <- function(x, file = stdout(), ...) {
+  cat(red(paste0(x, collapse = "\n")), file = file, sep = "\n")
   jar$add()
   invisible(x)
 }
@@ -43,16 +43,50 @@ print.swear <- function(x, ...) {
 #'
 #' @export
 swear_on_stop <- function() {
+  op <- options(show.error.message = TRUE, error = swear_on_stop_fun)
+
+  if (is.null(getOption("swears.error_original"))) {
+    op$show.error.message <- op$show.error.message
+    op$error <- op$error
+    options(swears.error_original = op)
+  }
+
+  invisible()
+}
+
+#' @rdname swear_on_stop
+#' @export
+swear_on_stop_append <- function() {
+  swear_on_stop()
   options(error = function() {
-    em <- geterrmessage()
-    if (grepl("object of type 'closure' is not subsettable", em)) {
-      sw <- swear(id = 11)
+    o <- getOption("swears.error_original")
+    if (is.function(o)) {
+      do.call(o, list())
     } else {
-      sw <- swear()
+      force(o)
     }
-    cat(red(sw), sep = "\n")
+    swear_on_stop_fun()
   })
-  message("successfully updated error option")
+
+  invisible()
+}
+
+#' @rdname swear_on_stop
+#' @export
+swear_on_stop_reset <- function() {
+  options(getOption("swears.error_original"))
+  options(swears.error_original = NULL)
+  invisible()
+}
+
+swear_on_stop_fun <- function() {
+  em <- geterrmessage()
+  if (grepl("object of type 'closure' is not subsettable", em, fixed = TRUE)) {
+    sw <- swear(id = 11)
+  } else {
+    sw <- swear()
+  }
+  print(sw, file = stderr())
 }
 
 #' Swears

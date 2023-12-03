@@ -40,7 +40,7 @@ censor <- function(x) {
     function(i) {
       paste0(gsub(pattern, replace, i, ignore.case = TRUE), collapse = " ")
     },
-    character(1),
+    NA_character_,
     USE.NAMES = FALSE
   )
 }
