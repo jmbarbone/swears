@@ -30,6 +30,7 @@ swear <- function(method = getOption("swear.method", "explicit"), n = 1L, id = N
 #' @export
 print.swear <- function(x, ...) {
   cat(red(paste0(x, collapse = "\n")), sep = "\n")
+  jar$add()
   invisible(x)
 }
 
